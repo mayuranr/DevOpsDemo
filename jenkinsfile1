@@ -12,7 +12,7 @@ pipeline {
         stage('build') {
             steps {
                 withMaven(maven: 'maven_3_6_3') {
-                sh 'mvn build'
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
