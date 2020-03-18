@@ -4,12 +4,18 @@ pipeline {
         maven 'MAVEN_HOME' 
         jdk 'JAVA_HOME' 
     }
-    stages {
-        stage('Build') {
+	stages {
+        stage('Build') { 
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'                  
-                }
-              
+                sh 'mvn -B -WebApp clean package' 
             }
         }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            
+        }
+    }
 }
+
